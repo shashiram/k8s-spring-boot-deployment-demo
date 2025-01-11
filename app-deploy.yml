@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-kube-demo
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-kube-demo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-boot-kube-demo
+    spec:
+      containers:
+        - name: spring-boot-kube-demo
+          image: kube-demo:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
